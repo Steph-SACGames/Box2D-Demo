@@ -16,10 +16,10 @@
         [self createWorldBoundary];
         [self addNewBallAtPosition:CGPointMake(100, 200)];
         
-        //[self createResetButton];
+        [self createResetButton];
         
-        //self.isAccelerometerEnabled = YES;
-        //self.touchEnabled = YES;
+        self.isAccelerometerEnabled = YES;
+        self.touchEnabled = YES;
 
         [self schedule:@selector(tick:)]; //call a method as often as possible. It is better to call it at a set frequency, like 60 times per second, but to keep it simple, this is fine
     }
@@ -57,7 +57,7 @@
 
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
     //setup for landscape left
-    b2Vec2 gravity(-acceleration.y * 15, acceleration.x *15); //set gravity to be a multiple of acceleration vector
+    b2Vec2 gravity(acceleration.y * 15, -acceleration.x *15); //set gravity to be a multiple of acceleration vector
     _world->SetGravity(gravity);
 }
 
@@ -145,7 +145,7 @@
     
 #ifndef DEBUG
     // Create sprite and add it to the layer
-    CCSprite *ball = [CCSprite spriteWithFile:@"ball.png" rect:CGRectMake(0, 0, 52, 52)];
+    CCSprite *ball = [CCSprite spriteWithFile:@"ball.png" rect:CGRectMake(0, 0, 26, 26)];
     ball.position = ccp(100, 100); //starting position
     [self addChild:ball]; //add the sprite to the cocos2d scene
     
