@@ -155,7 +155,7 @@
     b2Body *ballBody = _world->CreateBody(&ballBodyDef);
     
     b2CircleShape circle; //this time we want a circle shape
-    circle.m_radius = 26.0/PTM_RATIO; //our ball image is 52x52 pixels, or 26x26 points
+    circle.m_radius = 13.0/PTM_RATIO; //our ball image is 52x52 pixels, or 26x26 points. Half that for the radius.
     
     b2FixtureDef ballShapeDef; //setup the ball fixture
     ballShapeDef.shape = &circle;
